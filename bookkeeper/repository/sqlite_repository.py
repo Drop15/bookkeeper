@@ -21,7 +21,7 @@ class SQLiteRepository(AbstractRepository[T]):
     cls: type
     fields: dict[str, type]
 
-    def __init__(self, db_file: str, cls: type) -> None:
+    def __init__(self, cls: type, db_file: str = DB_FILE) -> None:
         self.db_file = db_file
         self.table_name = cls.__name__.lower()
         self.fields = get_annotations(cls, eval_str=True)
@@ -135,4 +135,4 @@ class SQLiteRepository(AbstractRepository[T]):
 
     @classmethod
     def repository_factory(cls, models: list[type], db_file: str | None = None) -> dict[type, type]:
-        return {model: cls(model, db_file for model in models}
+        return {model: cls(model, db_file) for model in models}
