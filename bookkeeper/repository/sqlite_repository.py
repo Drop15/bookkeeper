@@ -8,6 +8,8 @@ from inspect import get_annotations
 
 import sqlite3
 
+DB_FILE = 'bookkeeper/db/client.db'
+
 
 class SQLiteRepository(AbstractRepository[T]):
     """
@@ -133,4 +135,4 @@ class SQLiteRepository(AbstractRepository[T]):
 
     @classmethod
     def repository_factory(cls, models: list[type], db_file: str | None = None) -> dict[type, type]:
-        return {model: cls(db_file, model) for model in models}
+        return {model: cls(model, db_file for model in models}
