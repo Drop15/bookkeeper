@@ -39,6 +39,11 @@
 poetry install
 ```
 
+Для запуска приложения:
+```commandline
+poetry run python bookkeeper/app_bookkeeper.py
+```
+
 Для запуска тестов и статических анализаторов используйте следующие команды (убедитесь, 
 что вы находитесь в корневой папке проекта):
 ```commandline

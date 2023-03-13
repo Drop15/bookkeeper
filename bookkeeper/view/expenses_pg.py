@@ -161,7 +161,7 @@ class AddAmountElement(QtWidgets.QWidget):
         self.add_amount_input.setPlaceholderText('Введите сумму, которую вы потратили')
         self.add_expense_date = QtWidgets.QLineEdit(datetime.now().strftime('%d-%m-%Y'))
         self.add_expense_date.setPlaceholderText(
-            'Формат: day-month-year'
+            'Формат: день-месяц-год'
         )
 
         self.layout.addWidget(self.add_amount_input)
