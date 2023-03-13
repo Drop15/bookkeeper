@@ -210,6 +210,6 @@ if __name__ == "__main__":
     app = Bookkeeper(
         view=View(), repository_factory=SQLiteRepository.repository_factory(
             models=[Category, Expense, Budget],
-            db_file='databases/client.sqlite.db'
+            db_file='bookkeeper/databases/client.sqlite.db'
         )
     )
