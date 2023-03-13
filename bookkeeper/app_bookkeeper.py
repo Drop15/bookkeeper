@@ -88,7 +88,7 @@ class Bookkeeper:
         self.cat_repo.add(Category(name=category_name, parent=parent_id))
         self.view.window.categories_page.categories_list.set_tree(
             category_tree_getter=self.get_category_tree)
-        self.view.window.expenses_page.add_expense.choose_category.update_categories(
+        self.view.window.expenses_page.add_expense.choose_category.category_box.update_categories(
             category_list_getter=self.get_categories_list)
 
     def edit_existing_category(self,
@@ -102,14 +102,14 @@ class Bookkeeper:
                                       pk=category_id))
         self.view.window.categories_page.categories_list.set_tree(
             category_tree_getter=self.get_category_tree)
-        self.view.window.expenses_page.add_expense.choose_category.update_categories(
+        self.view.window.expenses_page.add_expense.choose_category.category_box.update_categories(
             category_list_getter=self.get_categories_list)
 
     def delete_category(self, category_id: int) -> None:
         self.cat_repo.delete(category_id)
         self.view.window.categories_page.categories_list.set_tree(
             category_tree_getter=self.get_category_tree)
-        self.view.window.expenses_page.add_expense.choose_category.update_categories(
+        self.view.window.expenses_page.add_expense.choose_category.category_box.update_categories(
             category_list_getter=self.get_categories_list)
 
     def get_expenses(self) -> list[Expense]:

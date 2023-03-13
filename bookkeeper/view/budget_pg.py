@@ -148,4 +148,3 @@ class BudgetPage(QtWidgets.QWidget):
 
         self.change_budget_window = ChangeBudgetWindow(budgets_setter=set_handler)
         self.layout.addWidget(self.change_budget_window)
-
