@@ -4,7 +4,7 @@ from bookkeeper.repository.sqlite_repository import SQLiteRepository
 import pytest
 
 
-TEST_DB = 'bookkeeper/db/test.db'
+TEST_DB = 'bookkeeper/databases/test.sqlite.db'
 
 
 @pytest.fixture

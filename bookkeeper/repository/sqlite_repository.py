@@ -2,13 +2,13 @@
 Модуль описывает репозиторий, работающий с SQLite
 """
 
-from typing import Any
-from bookkeeper.repository.abstract_repository import AbstractRepository, T
 from inspect import get_annotations
-
 import sqlite3
+from typing import Any
 
-DB_FILE = 'bookkeeper/db/client.db'
+from bookkeeper.repository.abstract_repository import AbstractRepository, T
+
+DB_FILE = 'databases/client.sqlite.db'
 
 
 class SQLiteRepository(AbstractRepository[T]):
@@ -56,7 +56,9 @@ class SQLiteRepository(AbstractRepository[T]):
         con.close()
         return res
 
-    def get_all(self, where: dict[str, Any] | None = None, subquery: str | None = None) -> list[T | None]:
+    def get_all(self,
+                where: dict[str, Any] | None = None,
+                subquery: str | None = None) -> list[T | None]:
         with sqlite3.connect(self.db_file) as con:
             cur = con.cursor()
             query = f"SELECT * FROM {self.table_name}"
@@ -134,5 +136,7 @@ class SQLiteRepository(AbstractRepository[T]):
         return out
 
     @classmethod
-    def repository_factory(cls, models: list[type], db_file: str | None = None) -> dict[type, type]:
+    def repository_factory(cls,
+                           models: list[type],
+                           db_file: str | None = None) -> dict[type, type]:
         return {model: cls(model, db_file) for model in models}
